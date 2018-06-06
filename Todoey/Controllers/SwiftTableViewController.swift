@@ -2,7 +2,7 @@
 //  SwipeTableViewController.swift
 //  Todoey
 //
-//  Created by Daniel Hinker on 6/6/18.
+//  Created by Daniel Hinker on 6/3/18.
 //  Copyright © 2018 Daniel Hinker. All rights reserved.
 //
 
