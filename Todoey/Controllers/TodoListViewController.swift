@@ -30,7 +30,6 @@ class TodoListViewController: SwipeTableViewController {
         
         tableView.separatorStyle = .none
         
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,7 +43,31 @@ class TodoListViewController: SwipeTableViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         
-        updateNavBar(withHexCode: "0089FF")
+        
+        self.dismiss(animated: true)
+        
+    }
+    
+    private func animate() {
+        guard let coordinator = self.transitionCoordinator else {
+            return
+        }
+        
+        coordinator.animate(alongsideTransition: {
+            [weak self] context in
+            self?.setColors()
+            }, completion: nil)
+    }
+    
+    private func setColors(){
+        //        navigationController?.navigationBar.tintColor = .
+        navigationController?.navigationBar.barTintColor = UIColor(hexString: "0089FF")
+    }
+    
+    
+    override func willMove(toParentViewController parent: UIViewController?) { // tricky part in iOS 10
+        navigationController?.navigationBar.barTintColor = UIColor(hexString: "0089FF") //previous color
+        super.willMove(toParentViewController: parent)
     }
     
     //MARK: - Nav Bar Setup Methods

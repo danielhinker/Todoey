@@ -23,7 +23,25 @@ class CategoryViewController: SwipeTableViewController {
         
         tableView.separatorStyle = .none
         
+        
     }
+    
+    private func animate() {
+        guard let coordinator = self.transitionCoordinator else {
+            return
+        }
+        
+        coordinator.animate(alongsideTransition: {
+            [weak self] context in
+            self?.setColors()
+            }, completion: nil)
+    }
+    
+    private func setColors() {
+        navigationController?.navigationBar.barTintColor = UIColor(hexString: "0089FF")
+    }
+    
+    
     
     //MARK: - TableView Datasource Methods
     
@@ -39,9 +57,9 @@ class CategoryViewController: SwipeTableViewController {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
         if let category = categories?[indexPath.row] {
-        
+            
             cell.textLabel?.text = category.name
-        
+            
             guard let categoryColor = UIColor(hexString: category.color) else { fatalError() }
             
             cell.backgroundColor = categoryColor
