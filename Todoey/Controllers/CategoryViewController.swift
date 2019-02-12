@@ -103,7 +103,7 @@ class CategoryViewController: SwipeTableViewController {
     
     func loadCategories() {
         
-        categories  = realm.objects(Category.self)
+        categories = realm.objects(Category.self)
         
         tableView.reloadData()
         
